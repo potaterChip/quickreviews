@@ -41,3 +41,14 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+.gradle
+.idea
+devDb.*
+target
+stacktrace.logg
+test/reports
+web-app/plugins
+target-eclipse
+.settings
