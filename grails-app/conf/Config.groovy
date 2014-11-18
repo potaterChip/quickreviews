@@ -41,6 +41,12 @@ grails.views.default.codec = "html"
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
 
+grails.resources.modules = {
+	core {
+		dependsOn 'jquery'
+	}
+}
+
 // GSP settings
 grails {
     views {

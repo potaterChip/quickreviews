@@ -2,20 +2,44 @@
 <head>
 	<title>Quick Reviews</title>
 	<asset:stylesheet src="reviews.css"/>
+	<g:javascript library="jquery" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#search").click(function() {
+				$.ajax({
+					url: "review",
+					success: function(results) {
+						$("#theReview").text(results.review);
+						$("#theReview").fadeIn(1500);
+					},
+					error: function(results) {
+						alert("didn't work");
+					}
+				});
+				
+				return false;
+			});
+
+		});
+	</script>
 </head>
 <body>
+
 	<div id="fullscreenDiv">
 		<span style="display: block;">
 			<center>
 		<div class="centerText">ENTER A MOVIE TITLE BELOW
 			<div>
 				<formset>
-					<g:form action="results">
+					<g:form name="woo" action="results">
 						<g:textField name="movieName" />
-						<g:submitButton name="search" value="Search" />
+						<g:submitButton name="search" value="Search" />	
 					</g:form>
 				</formset>
 			</div>
+		</div>
+		<div id="reviewDiv">
+			<span id="theReview" style="display: none;"></span>
 		</div>
 			</center>
 		</span>

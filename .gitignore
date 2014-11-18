@@ -50,5 +50,6 @@ target
 stacktrace.logg
 test/reports
 web-app/plugins
+web-app/js/jquery
 target-eclipse
 .settings

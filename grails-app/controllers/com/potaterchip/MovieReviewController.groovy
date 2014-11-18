@@ -7,6 +7,12 @@ class MovieReviewController {
 	
 	def search2() {}
 	
+	def review() {
+		render (contentType: 'text/json') {
+			 review = "IT SUCKS"
+		}
+	}
+	
 	def results(String movieName) {
 		def movie = MovieReview.where {
 			movieName =~ "%${movieName}%"
