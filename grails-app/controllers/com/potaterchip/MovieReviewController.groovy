@@ -8,9 +8,22 @@ class MovieReviewController {
 	def search2() {}
 	
 	def review() {
-		render (contentType: 'text/json') {
-			 review = "IT SUCKS"
+		def tempName = params.movieName
+		def movie = MovieReview.where {
+			movieName =~ "${tempName}"
+		}.get()
+		
+		
+		if(movie != null) {
+			render (contentType: 'text/json') {
+				review = movie.quickReview
+		   }
+		}else {
+			render (contentType: 'text/json') {
+				review = "Try entering an actual movie."
+			}
 		}
+		
 	}
 	
 	def results(String movieName) {

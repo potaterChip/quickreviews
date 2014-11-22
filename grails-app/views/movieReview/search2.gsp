@@ -6,8 +6,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#search").click(function() {
+				$("#theReview").hide();
 				$.ajax({
 					url: "review",
+					data: { movieName : $("#movieName").val()},
 					success: function(results) {
 						$("#theReview").text(results.review);
 						$("#theReview").fadeIn(1500);
@@ -32,7 +34,7 @@
 			<div>
 				<formset>
 					<g:form name="woo" action="results">
-						<g:textField name="movieName" />
+						<g:textField name="movieName" autocomplete="off" />
 						<g:submitButton name="search" value="Search" />	
 					</g:form>
 				</formset>
