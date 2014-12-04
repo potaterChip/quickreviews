@@ -2,7 +2,14 @@
 <head>
 	<title>Quick Reviews</title>
 	<asset:stylesheet src="reviews.css"/>
+	<asset:stylesheet src="autocomplete.css" />
+	<asset:stylesheet src="jquery-ui.css" />
 	<g:javascript library="jquery" />
+	
+	<g:javascript library="jquery-ui"></g:javascript>
+	<!--  <r:require module="jquery-ui" /> -->
+	<!-- <asset:javascript src="autocomplete.js" /> -->
+	 <r:layoutResources/> 
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#search").click(function() {
@@ -22,11 +29,51 @@
 				return false;
 			});
 
+			var availableTags = [
+			                     "ActionScript",
+			                     "AppleScript",
+			                     "Asp",
+			                     "BASIC",
+			                     "C",
+			                     "C++",
+			                     "Clojure",
+			                     "COBOL",
+			                     "ColdFusion",
+			                     "Erlang",
+			                     "Fortran",
+			                     "Groovy",
+			                     "Haskell",
+			                     "Java",
+			                     "JavaScript",
+			                     "Lisp",
+			                     "Perl",
+			                     "PHP",
+			                     "Python",
+			                     "Ruby",
+			                     "Scala",
+			                     "Scheme"
+			                   ];
+
+		$("#movieName").autocomplete({
+				//source : availableTags,
+				//source: "http://localhost:8080/category/fakeTestJson"
+				source: "results",
+				minLength : 2,
+
+				html : true, // optional (jquery.ui.autocomplete.html.js required)
+
+				// optional (if other layers overlap autocomplete list)
+				/*open : function(event, ui) {
+					$(".ui-autocomplete").css("z-index", 1000);
+				}*/
+			});
+
 		});
 	</script>
 </head>
 <body>
-
+ 
+	 					
 	<div id="fullscreenDiv">
 		<span style="display: block;">
 			<center>
@@ -46,5 +93,10 @@
 			</center>
 		</span>
 	</div>
+	<!-- <div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags"> -->
+</div>
+ 
 </body>
 </html>

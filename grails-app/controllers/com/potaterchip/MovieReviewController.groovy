@@ -26,7 +26,7 @@ class MovieReviewController {
 		
 	}
 	
-	def results(String movieName) {
+	/*def results(String movieName) {
 		def movie = MovieReview.where {
 			movieName =~ "%${movieName}%"
 		}.get()
@@ -35,5 +35,22 @@ class MovieReviewController {
 				term: params.movieName
 			]
 		
+	}*/
+	def results() {
+		def movieName = params.term
+		
+		def movies = MovieReview.where {
+			movieName =~ "%${movieName}%"
+		}
+		
+		def movieNames = []
+		
+		for(movie in movies) {
+			movieNames.add(movie.getMovieName())
+		}
+		
+		render(contentType: 'text/json') {
+			movieNames
+		}
 	}
 }

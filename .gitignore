@@ -51,5 +51,7 @@ stacktrace.logg
 test/reports
 web-app/plugins
 web-app/js/jquery
+web-app/js/jquery-ui*
+web-app/jquery-ui-1.10.4
 target-eclipse
 .settings
