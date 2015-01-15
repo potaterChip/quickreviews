@@ -5,7 +5,7 @@ class MovieReviewController {
 	
 	def search() {}
 	
-	def search2() {}
+	def htmlService
 	
 	def review() {
 		def tempName = params.movieName
@@ -13,10 +13,13 @@ class MovieReviewController {
 			movieName =~ "${tempName}"
 		}.get()
 		
+		if(movie == null) {			
+			movie = htmlService.contactRTApiUnthreaded(tempName);
+		}
 		
 		if(movie != null) {
 			render (contentType: 'text/json') {
-				review = movie.quickReview
+				review = movie
 		   }
 		}else {
 			render (contentType: 'text/json') {
@@ -26,27 +29,20 @@ class MovieReviewController {
 		
 	}
 	
-	/*def results(String movieName) {
-		def movie = MovieReview.where {
-			movieName =~ "%${movieName}%"
-		}.get()
-		return [
-				movie: movie,
-				term: params.movieName
-			]
-		
-	}*/
 	def results() {
-		def movieName = params.term
+		def movieTitle = params.term
 		
 		def movies = MovieReview.where {
-			movieName =~ "%${movieName}%"
+			movieName =~ "%${movieTitle}%" && reviewScore > -1
 		}
 		
 		def movieNames = []
-		
-		for(movie in movies) {
-			movieNames.add(movie.getMovieName())
+		if(movies.size() > 0) {
+			for(movie in movies) {
+				movieNames.add(movie.getMovieName())
+			}
+		}else if(movieTitle.size() > 3){
+			htmlService.contactRTApi(movieTitle);
 		}
 		
 		render(contentType: 'text/json') {

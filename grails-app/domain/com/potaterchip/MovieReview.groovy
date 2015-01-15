@@ -4,9 +4,10 @@ class MovieReview {
 
 	String movieName
 	String quickReview
-	String director
 	int reviewScore
+	String homeLink
 	
     static constraints = {
+		homeLink nullable: true
     }
 }
