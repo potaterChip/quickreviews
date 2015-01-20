@@ -28,3 +28,33 @@
 	color: #E4001B;
 	margin-top: 7%;
 }
+
+.searchWrap {
+	display: inline-block;
+	background: #FFF;
+	position: relative;
+	font-size: 50%;
+	margin-top: 10px;
+}
+
+.searchBox {
+	width: 215px;
+	padding: 1px, 0;
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 1.3em;
+	text-align: left;
+	border: none;
+	outline: none;
+}
+
+.searchSubmit {
+	width: 25px;
+	height: 20px;
+	vertical-align: middle;
+	padding: 0;
+	border: none;
+	outline: none;
+	margin-top: 3px;
+	background: url(magnifier12.png) no-repeat;
+}

@@ -46,7 +46,6 @@
 	</script>
 </head>
 <body>
- 
 	 					
 	<div id="fullscreenDiv">
 		<span style="display: block;">
@@ -55,12 +54,16 @@
 			<div>
 				<formset>
 					<g:form name="woo" action="results">
-						<g:textField name="movieName" autocomplete="off" />
-						<g:submitButton name="search" value="Search" />	
+							<div class="searchWrap">
+								<input id="movieName" class="searchBox" type="text"> <input id="search" class="searchSubmit" type="submit" value>
+							</div>
+							<!-- <g:textField name="movieName" autocomplete="off" />
+						<g:submitButton name="search" value="Search" /> -->
 					</g:form>
 				</formset>
 			</div>
 		</div>
+		
 		<div id="reviewDiv">
 			<span id="theReview" style="display: none;"></span>
 		</div>
