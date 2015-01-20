@@ -467,6 +467,7 @@ button.ui-button::-moz-focus-inner {
 	padding: 3px 1em 3px .4em;
 	cursor: pointer;
 	min-height: 0; /* support: IE7 */
+	text-align: left;
 	/* support: IE10, see #8844 */
 	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
@@ -845,7 +846,8 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;
-	background: #eeeeee url("images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% top repeat-x;
+	/*background: #eeeeee url("images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% top repeat-x;*/
+	background: #fff;
 	color: #333333;
 }
 .ui-widget-content a {

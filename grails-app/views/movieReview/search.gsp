@@ -39,7 +39,8 @@
 				source: "results",
 				minLength : 2,
 
-				html : true
+				html : true,
+				appendTo: "#searchWrapDiv"
 			});
 
 		});
@@ -54,7 +55,7 @@
 			<div>
 				<formset>
 					<g:form name="woo" action="results">
-							<div class="searchWrap">
+							<div id="searchWrapDiv" class="searchWrap">
 								<input id="movieName" class="searchBox" type="text"> <input id="search" class="searchSubmit" type="submit" value>
 							</div>
 							<!-- <g:textField name="movieName" autocomplete="off" />
