@@ -116,6 +116,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 244px;
 	cursor: default;
 }
 .ui-button {
@@ -462,14 +463,22 @@ button.ui-button::-moz-focus-inner {
 	position: absolute;
 }
 .ui-menu .ui-menu-item {
-	position: relative;
+	/*position: relative;
 	margin: 0;
 	padding: 3px 1em 3px .4em;
 	cursor: pointer;
-	min-height: 0; /* support: IE7 */
+	min-height: 0; /* support: IE7 
 	text-align: left;
-	/* support: IE10, see #8844 */
-	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+	width: 100%;
+	/* support: IE10, see #8844 
+	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");*/
+	margin: 0;
+padding: 0;
+zoom: 1;
+float: left;
+clear: left;
+width: 100%;
+background: red;
 }
 .ui-menu .ui-menu-divider {
 	margin: 5px 0;
@@ -481,6 +490,7 @@ button.ui-button::-moz-focus-inner {
 .ui-menu .ui-state-focus,
 .ui-menu .ui-state-active {
 	margin: -1px;
+	background: grey;
 }
 
 /* icon support */
@@ -885,10 +895,16 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #fbcb09;
-	background: #fdf5ce url("images/ui-bg_glass_100_fdf5ce_1x400.png") 50% 50% repeat-x;
-	font-weight: bold;
-	color: #c77405;
+	border: none;
+	/*background: #fdf5ce url("images/ui-bg_glass_100_fdf5ce_1x400.png") 50% 50% repeat-x;
+	font-weight: bold;*/
+	color: black;
+	background: grey;
+	font-size: 12px;
+	border-radius: 0;
+	outline: none;
+	width: 100%;
+	display: block;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -900,6 +916,10 @@ body .ui-tooltip {
 .ui-state-focus a:visited {
 	color: #c77405;
 	text-decoration: none;
+	outline: none;
+	background: grey;
+	width: 100%;
+	display: block;
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active,

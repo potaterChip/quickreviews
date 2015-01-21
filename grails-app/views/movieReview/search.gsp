@@ -1,9 +1,8 @@
 <html>
 <head>
 	<title>Quick Reviews</title>
-	<asset:stylesheet src="reviews.css"/>
-	<asset:stylesheet src="autocomplete.css" />
 	<asset:stylesheet src="jquery-ui.css" />
+	<asset:stylesheet src="reviews.css"/>
 	<g:javascript library="jquery" />
 	
 	<g:javascript library="jquery-ui"></g:javascript>
