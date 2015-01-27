@@ -11,15 +11,16 @@
 	 <r:layoutResources/> 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#search").click(function() {
+			var submitFunction = function(term) {
 				$("#theReview").hide();
 				$("#theInfo").hide();
+				var title = term ? term : $("#movieName").val();
 				$.ajax({
 					url: "review",
-					data: { movieName : $("#movieName").val()},
+					data: { movieName : title},
 					success: function(results) {
 						$("#theReview").text(results.review.quickReview);
-						$("#theReview").fadeIn("slow", function() {
+						$("#theReview").fadeIn(2000, function() {
 								if(results.review.homeLink) {
 									$("#outsideMovieLink").attr("href", results.review.homeLink);
 									$("#theInfo").show();
@@ -32,12 +33,17 @@
 				});
 				
 				return false;
+			};
+			
+			$("#search").click(function() {
+					submitFunction(null);
+					return false;
 			});
 
 		$("#movieName").autocomplete({
 				source: "results",
 				minLength : 2,
-
+				select: function(event, ui) {submitFunction(ui.item.value);},
 				html : true,
 				appendTo: "#searchWrapDiv"
 			});
