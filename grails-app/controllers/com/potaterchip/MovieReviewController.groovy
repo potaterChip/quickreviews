@@ -3,7 +3,13 @@ package com.potaterchip
 class MovieReviewController {
     static scaffold = true
 	
-	def search() {}
+	def search() {
+		withMobileDevice { device ->
+			redirect(action: "search_m");
+		}
+	}
+	
+	def search_m() {}
 	
 	def htmlService
 	
