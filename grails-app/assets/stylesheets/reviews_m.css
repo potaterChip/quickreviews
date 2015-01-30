@@ -1,0 +1,58 @@
+@CHARSET "ISO-8859-1";
+
+#fullScreenDiv {
+	background-color: #333;
+	color: #acacac;
+	width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}
+
+#centerText {
+	font-size: 200%;
+	position: absolute;
+	top: 20%;
+	left: 35%;
+}
+
+.centerText {
+	font-size: 200%;
+}
+
+#reviewDiv {
+	font-size: 50;
+	color: #E4001B;
+	margin-top: 7%;
+}
+
+.searchWrap {
+	display: inline-block;
+	background: #FFF;
+	position: relative;
+	font-size: 75%;
+	margin-top: 10px;
+}
+
+.searchBox {
+	vertical-align: middle;
+	font-size: 100%;
+	line-height: 1.3em;
+	text-align: left;
+	border: none;
+	outline: none;
+	width: 76%;
+}
+
+.searchSubmit {
+	width: 20%;
+	height: 20px;
+	vertical-align: middle;
+	padding: 0;
+	border: none;
+	outline: none;
+	margin-top: 3px;
+	background: url(magnifier12.png) no-repeat right 1;
+}

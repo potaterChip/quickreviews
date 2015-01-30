@@ -2,13 +2,14 @@
 <head>
 	<title>Quick Reviews</title>
 	<asset:stylesheet src="jquery-ui.css" />
-	<asset:stylesheet src="reviews.css"/>
+	<asset:stylesheet src="reviews_m.css"/>
 	<g:javascript library="jquery" />
 	
 	<g:javascript library="jquery-ui"></g:javascript>
 	<!--  <r:require module="jquery-ui" /> -->
 	<!-- <asset:javascript src="autocomplete.js" /> -->
 	 <r:layoutResources/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var submitFunction = function(term) {
@@ -52,19 +53,16 @@
 	</script>
 </head>
 <body>
-	 					
-	<div id="fullscreenDiv">
+	 	<div id="fullscreenDiv">				
 		<span style="display: block;">
-			<center>
-		<div class="centerText">ENTER A MOVIE NOW
+		<center>
+		<div class="centerText">ENTER A MOVIE
 			<div>
 				<formset>
 					<g:form name="woo" action="results">
-							<div id="searchWrapDiv" class="searchWrap">
+							<div align="left" id="searchWrapDiv" class="searchWrap">
 								<input id="movieName" class="searchBox" type="text"> <input id="search" class="searchSubmit" type="submit" value>
 							</div>
-							<!-- <g:textField name="movieName" autocomplete="off" />
-						<g:submitButton name="search" value="Search" /> -->
 					</g:form>
 				</formset>
 			</div>
@@ -76,10 +74,9 @@
 		<div id="movieInfoDiv">
 			<span id="theInfo" style="display: none;">Don't believe it? Click <a id="outsideMovieLink" href="#" target="_blank">here</a></span>
 		</div>
-			</center>
+		</center> 
 		</span>
-	</div>
-</div>
+		</div>
  
 </body>
 </html>
