@@ -14,6 +14,7 @@
 			var submitFunction = function(term) {
 				$("#theReview").hide();
 				$("#theInfo").hide();
+				$("#theReview").stop(true, true);
 				var title = term ? term : $("#movieName").val();
 				$.ajax({
 					url: "review",
@@ -21,7 +22,7 @@
 					success: function(results) {
 						$("#theReview").text(results.review.quickReview);
 						$("#theReview").fadeIn(2000, function() {
-								if(results.review.homeLink) {
+								if(results.review.homeLink && $("#theReview").is(':visible')) {
 									$("#outsideMovieLink").attr("href", results.review.homeLink);
 									$("#theInfo").show();
 								}
