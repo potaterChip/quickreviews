@@ -29,7 +29,7 @@ class MovieReviewController {
 		   }
 		}else {
 			render (contentType: 'text/json') {
-				review = "Try entering an actual movie."
+				review = { quickReview = "Try entering an actual movie." }
 			}
 		}
 		

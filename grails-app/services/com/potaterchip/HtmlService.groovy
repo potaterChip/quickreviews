@@ -66,10 +66,8 @@ class HtmlService {
 					//movieReview.setQuickReview("No one has even seen this crap");
 				}
 				if(movieReview.save(failOnError: true)) {
-					println "A new movie review save";
 					return movieReview;
 				}else {
-					println "movie review was not saved";
 					return null;
 				}
 			}else {
