@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Quick Reviews</title>
-	<asset:stylesheet src="jquery-ui.css" />
+	<asset:stylesheet src="jquery-ui-m.css" />
 	<asset:stylesheet src="reviews_m.css"/>
 	<g:javascript library="jquery" />
 	
@@ -20,6 +20,7 @@
 					url: "review",
 					data: { movieName : title},
 					success: function(results) {
+						$("#movieName").blur();
 						$("#theReview").text(results.review.quickReview);
 						$("#theReview").fadeIn(2000, function() {
 								if(results.review.homeLink) {
