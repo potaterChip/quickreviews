@@ -11,8 +11,10 @@ import groovyx.net.http.ContentType
 @Transactional
 class HtmlService {
 
+	
 	def grailsApplication
 	def executorService
+	def movieReviewService
 	def static HTTPBuilder http = new HTTPBuilder('http://api.rottentomatoes.com/api/public/v1.0/');
 	
 	
@@ -30,15 +32,20 @@ class HtmlService {
 		}
 	}
 	
-	def contactRTApi(String movieTitle) {
+	def loadMovieData() {
+		
+		contactRTApi("a", 1);
+	}
+	
+	def contactRTApi(String movieTitle, pageNumber) {
 		def apiKey = grailsApplication.config['rottenTomatoesApi']
-		executorService.submit( {
-			http.get( path : 'movies.json', query : [apikey: apiKey, q: movieTitle, page_limit: 50] ) { resp, json ->
-				for(movie in json.movies) {
-					createNewMovie(movie)
-				}
-			}
-		} as Callable)
+		def callAgain = true;
+		def number = 1;
+		while(callAgain) {
+			callAgain = movieReviewService.callAndSaveApi(apiKey, movieTitle, number);
+			number = number + 1;
+			sleep 1000
+		}
 	}
 
 	private createNewMovie(movie) {
@@ -52,20 +59,26 @@ class HtmlService {
 				movieReview.setHomeLink(movie.links.alternate)
 				def reviewScore = movie.ratings.critics_score;
 				movieReview.setReviewScore(reviewScore);
+				try {
 				if(reviewScore > 90) {
 					//movieReview.setQuickReview("Yeah, it's great.");
-					movieReview.setQuickReview(ReviewLists.greatReviews.get(ReviewLists.getRandomNumber(ReviewLists.greatReviews.size())));
+					movieReview.setQuickReview(ReviewLists.greatReviews.get(ReviewLists.getRandomNumber(ReviewLists.greatReviews.size()) - 1));
 				}else if(reviewScore > 75) {
 					//movieReview.setQuickReview("It's Ok, I guess");
-				movieReview.setQuickReview(ReviewLists.okReviews.get(ReviewLists.getRandomNumber(ReviewLists.okReviews.size())));
+					movieReview.setQuickReview(ReviewLists.okReviews.get(ReviewLists.getRandomNumber(ReviewLists.okReviews.size()) - 1));
 				}else if(reviewScore > 0){
 					//movieReview.setQuickReview("It Sucks");
-				movieReview.setQuickReview(ReviewLists.badReviews.get(ReviewLists.getRandomNumber(ReviewLists.badReviews.size())));
+					movieReview.setQuickReview(ReviewLists.badReviews.get(ReviewLists.getRandomNumber(ReviewLists.badReviews.size()) - 1));
 				}else {
-				movieReview.setQuickReview(ReviewLists.noReviews.get(ReviewLists.getRandomNumber(ReviewLists.noReviews.size())));
+					movieReview.setQuickReview(ReviewLists.noReviews.get(ReviewLists.getRandomNumber(ReviewLists.noReviews.size()) -1));
 					//movieReview.setQuickReview("No one has even seen this crap");
 				}
+				}catch(e) {
+					e.printStackTrace();
+					movieReview.setQuickReview("something errored");
+				}
 				if(movieReview.save(failOnError: true)) {
+					print "movie saved"
 					return movieReview;
 				}else {
 					return null;

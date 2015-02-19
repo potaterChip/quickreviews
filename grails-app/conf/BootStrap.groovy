@@ -1,11 +1,17 @@
 import com.potaterchip.MovieReview;
+import com.potaterchip.HtmlService;
 
 class BootStrap {
 
+	def htmlService
+	
 	def init = { servletContext ->
 		environments {
 			development {
-				if (!MovieReview.count()) createSampleData()
+				if (!MovieReview.count()) {
+					//createSampleData()
+					htmlService.loadMovieData();
+				}
 			}
 			test {
 				if (!MovieReview.count()) createSampleData()

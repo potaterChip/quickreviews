@@ -47,8 +47,9 @@ class MovieReviewController {
 			for(movie in movies) {
 				movieNames.add(movie.getMovieName())
 			}
-		}else if(movieTitle.size() > 3){
-			htmlService.contactRTApi(movieTitle);
+		}else if(movieTitle.size() > 3 && MovieReview.count() < 1){
+			//htmlService.contactRTApi(movieTitle);
+		/*htmlService.contactRTApi("a", 1);*/
 		}
 		
 		render(contentType: 'text/json') {
