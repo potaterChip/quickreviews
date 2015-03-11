@@ -20,7 +20,7 @@ class HtmlService {
 	
 	def contactRTApiUnthreaded(String movieTitle) {
 		def apiKey = grailsApplication.config['rottenTomatoesApi']
-		http.get(path : 'movies.json', query : [apikey: apiKey, q: movieTitle, page_limit: 1]) { resp, json ->
+		/*http.get(path : 'movies.json', query : [apikey: apiKey, q: movieTitle, page_limit: 1]) { resp, json ->
 			if(json.movies.size() > 1) {
 				return;
 			}else {
@@ -29,15 +29,19 @@ class HtmlService {
 					return movieReview;
 				}
 			}
-		}
+		}*/
+		return movieReviewService.callApiForOneMovie(apiKey, movieTitle);
 	}
 	
 	def loadMovieData() {
-		
-		contactRTApi("a", 1);
+		def daAlphabet = "abcdefghijklmnopqrstuvwxyz";
+		for(letter in daAlphabet) {
+			contactRTApi(letter, 1);
+		}
 	}
 	
 	def contactRTApi(String movieTitle, pageNumber) {
+		executorService.submit( {
 		def apiKey = grailsApplication.config['rottenTomatoesApi']
 		def callAgain = true;
 		def number = 1;
@@ -46,6 +50,7 @@ class HtmlService {
 			number = number + 1;
 			sleep 1000
 		}
+		} as Callable)
 	}
 
 	private createNewMovie(movie) {

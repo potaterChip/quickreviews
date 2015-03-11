@@ -17,7 +17,7 @@
 				$("#theReview").stop(true, true);
 				var title = term ? term : $("#movieName").val();
 				$.ajax({
-					url: "review",
+					url: "/quickreviews/movieReview/review",
 					data: { movieName : title},
 					success: function(results) {
 						$("#theReview").text(results.review.quickReview);
@@ -42,7 +42,7 @@
 			});
 
 		$("#movieName").autocomplete({
-				source: "results",
+				source: "/quickreviews/movieReview/results",
 				minLength : 2,
 				select: function(event, ui) {submitFunction(ui.item.value);},
 				html : true,

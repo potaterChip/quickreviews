@@ -6,8 +6,8 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-
-        "/"(view:"/index")
+		/* "/"(view:"/index") */
+          "/"(controller: 'MovieReview', action: 'search')
         "500"(view:'/error')
 	}
 }

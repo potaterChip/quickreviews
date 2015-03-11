@@ -2,6 +2,7 @@ package com.potaterchip
 
 class MovieReviewController {
     static scaffold = true
+	def grailsApplication
 	
 	def search() {
 		withMobileDevice { device ->
@@ -10,6 +11,30 @@ class MovieReviewController {
 	}
 	
 	def search_m() {}
+	
+	def login()  {
+		if(params.cName) 
+			return [cName: params.cName, aName: params.aName]
+	}
+	
+	def validate() {
+		def usss = grailsApplication.config['adminUser']
+		def passs = grailsApplication.config['adminPass']
+		def pussss = params.username
+		def ppasss = params.password
+		if(params.username == grailsApplication.config['adminUser'] &&
+			params.password == grailsApplication.config['adminPass']) {
+			session.loggedIn = true;
+			if(params.cName) {
+				redirect controller: params.cName, action: params.aName
+			}else {
+				redirect controller: 'tekEvent', action: 'index'
+			}
+		}else {
+			flash.message = "Invalid username and password."
+			render view:'login'
+		}
+	}
 	
 	def htmlService
 	
@@ -21,6 +46,7 @@ class MovieReviewController {
 		
 		if(movie == null) {			
 			movie = htmlService.contactRTApiUnthreaded(tempName);
+			htmlService.contactRTApi(tempName, 1);
 		}
 		
 		if(movie != null) {
@@ -48,8 +74,7 @@ class MovieReviewController {
 				movieNames.add(movie.getMovieName())
 			}
 		}else if(movieTitle.size() > 3 && MovieReview.count() < 1){
-			//htmlService.contactRTApi(movieTitle);
-		/*htmlService.contactRTApi("a", 1);*/
+			htmlService.contactRTApi(movieTitle, 1);
 		}
 		
 		render(contentType: 'text/json') {
