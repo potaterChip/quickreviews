@@ -6,8 +6,10 @@ class MovieReview {
 	String quickReview
 	int reviewScore
 	String homeLink
+	int numberOfSearches
 	
     static constraints = {
 		homeLink nullable: true
     }
+	
 }

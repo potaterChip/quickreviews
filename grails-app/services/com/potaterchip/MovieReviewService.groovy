@@ -9,6 +9,12 @@ class MovieReviewService {
 
 	def static HTTPBuilder http = new HTTPBuilder('http://api.rottentomatoes.com/api/public/v1.0/');
 	
+	def incrementNumberOfSearchesForMovieReview(movieReview) {
+		
+		movieReview.setNumberOfSearches(movieReview.getNumberOfSearches()+1)
+		def saved = movieReview.save(failOnError: true)
+	}
+	
 	def callApiForOneMovie(apiKey, movieTitle) {
 		def json = http.get( path : 'movies.json', query : [apikey: apiKey, q: movieTitle, page_limit: 1] ) { resp, json ->
 			json

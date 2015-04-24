@@ -20,15 +20,13 @@ class MovieReviewController {
 	def validate() {
 		def usss = grailsApplication.config['adminUser']
 		def passs = grailsApplication.config['adminPass']
-		def pussss = params.username
-		def ppasss = params.password
 		if(params.username == grailsApplication.config['adminUser'] &&
 			params.password == grailsApplication.config['adminPass']) {
 			session.loggedIn = true;
 			if(params.cName) {
 				redirect controller: params.cName, action: params.aName
 			}else {
-				redirect controller: 'tekEvent', action: 'index'
+				redirect controller: 'movieReview', action: 'index'
 			}
 		}else {
 			flash.message = "Invalid username and password."
@@ -37,6 +35,7 @@ class MovieReviewController {
 	}
 	
 	def htmlService
+	def movieReviewService
 	
 	def review() {
 		def tempName = params.movieName
@@ -47,26 +46,31 @@ class MovieReviewController {
 		if(movie == null) {			
 			movie = htmlService.contactRTApiUnthreaded(tempName);
 			htmlService.contactRTApi(tempName, 1);
-		}
-		
-		if(movie != null) {
-			render (contentType: 'text/json') {
-				review = movie
-		   }
-		}else {
 			render (contentType: 'text/json') {
 				review = { quickReview = "Try entering an actual movie." }
 			}
+		}else {
+			movieReviewService.incrementNumberOfSearchesForMovieReview(movie)
+			render (contentType: 'text/json') {
+				review = movie
+			}		
 		}
-		
 	}
 	
 	def results() {
 		def movieTitle = params.term
 		
-		def movies = MovieReview.where {
-			movieName =~ "%${movieTitle}%" && reviewScore > -1
+		def movieReviewCriteria = MovieReview.createCriteria()
+		def movies = movieReviewCriteria.list {
+			like ("movieName", "%${movieTitle}%")
+			maxResults(5)
+			order("numberOfSearches", "desc")
+			order("reviewScore", "desc")
 		}
+		
+		/*def movies = MovieReview.where {
+			movieName =~ "%${movieTitle}%" && reviewScore > -1
+		}*/
 		
 		def movieNames = []
 		if(movies.size() > 0) {

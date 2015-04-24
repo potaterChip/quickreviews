@@ -846,6 +846,7 @@ body .ui-tooltip {
 	font-size: 1.1em;*/
 	font: -webkit-small-control;
 	font-size: 11px;
+	font-weight: bold;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
