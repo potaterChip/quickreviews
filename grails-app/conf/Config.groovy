@@ -109,8 +109,7 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
+    error  'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
@@ -120,4 +119,17 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+		   
+	info 'org.codehaus.groovy.grails.web.servlet',        // controllers  
+			'grails.app.controllers.com.potaterchip.MovieReviewController'
+	
+	appenders {
+		rollingFile name:'movieReviewSearch', file:'movieReviewSearch', org.apache.log4j.Level.INFO, maxFileSize:1024, maxBackupIndex:7
+	}
+	
+	root {
+		info 'movieReviewSearch'
+		error()
+		additivity = true;
+	}
 }

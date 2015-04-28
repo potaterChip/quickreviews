@@ -41,12 +41,16 @@
 					return false;
 			});
 
-		$("#movieName").autocomplete({
+			$("#movieName").autocomplete({
 				source: "/quickreviews/movieReview/results",
 				minLength : 2,
 				select: function(event, ui) {submitFunction(ui.item.value);},
 				html : true,
 				appendTo: "#searchWrapDiv"
+			}).keyup(function(e) {
+				if(e.which === 13) {
+					$(".ui-menu").hide();
+				}
 			});
 
 		});

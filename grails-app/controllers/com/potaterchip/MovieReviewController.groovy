@@ -18,8 +18,6 @@ class MovieReviewController {
 	}
 	
 	def validate() {
-		def usss = grailsApplication.config['adminUser']
-		def passs = grailsApplication.config['adminPass']
 		if(params.username == grailsApplication.config['adminUser'] &&
 			params.password == grailsApplication.config['adminPass']) {
 			session.loggedIn = true;
@@ -39,13 +37,17 @@ class MovieReviewController {
 	
 	def review() {
 		def tempName = params.movieName
+		log.info("User searched for " + tempName);
 		def movie = MovieReview.where {
 			movieName =~ "${tempName}"
 		}.get()
 		
-		if(movie == null) {			
-			movie = htmlService.contactRTApiUnthreaded(tempName);
+		if(movie == null) {
+			movie = htmlService.contactRTApiUnthreaded(tempName); 
 			htmlService.contactRTApi(tempName, 1);
+		}
+		
+		if(movie == null) {			
 			render (contentType: 'text/json') {
 				review = { quickReview = "Try entering an actual movie." }
 			}
@@ -67,10 +69,6 @@ class MovieReviewController {
 			order("numberOfSearches", "desc")
 			order("reviewScore", "desc")
 		}
-		
-		/*def movies = MovieReview.where {
-			movieName =~ "%${movieTitle}%" && reviewScore > -1
-		}*/
 		
 		def movieNames = []
 		if(movies.size() > 0) {
