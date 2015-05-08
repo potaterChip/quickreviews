@@ -9,13 +9,18 @@ class ReviewLists {
 	private static Random randomNoNumber = new Random()
 	
 	public static greatReviews = ['Best. Movie. Ever.', 
-		'See this shit now!'];
+		'See this shit now!',
+		'Blew my load...er, mind',
+		];
 	public static okReviews = ["It's ok, I guess.",
-		 "Meh."];
+		 "Meh.", "I've seen worse, I suppose",
+		 "There are worse ways to waste time."];
 	public static badReviews = ["It sucks.", "How about...no",
-		 "What were they thinking when they made this?"];
+		 "What were they thinking when they made this?",
+		 "Maybe go outside or something instead"];
 	public static noReviews = ["No one has even seen this crap",
-		 "No one cares."];
+		 "No one cares.",
+		 "Are you sure this ever came out?"];
 	
 	def static getRandomNumber(integer) {
 		return random.next(integer);
