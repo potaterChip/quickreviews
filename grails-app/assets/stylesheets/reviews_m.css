@@ -56,3 +56,7 @@
 	margin-top: 3px;
 	background: url(magnifier12.png) no-repeat right 1;
 }
+
+.link {
+	color: inherit;
+}

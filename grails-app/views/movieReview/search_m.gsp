@@ -28,6 +28,10 @@
 									$("#outsideMovieLink").attr("href", results.review.homeLink);
 									$("#theInfo").show();
 								}
+								if(results.review.onDemandLink && $("#theReview").is(':visible')) {
+									$("#onDemandLink").attr("href", results.review.onDemandLink);
+									$("#onDemand").show();
+								}
 							});
 					},
 					error: function(results) {
@@ -74,7 +78,10 @@
 			<span id="theReview" style="display: none;"></span>
 		</div>
 		<div id="movieInfoDiv">
-			<span id="theInfo" style="display: none;">Don't believe it? Click <a id="outsideMovieLink" href="#" target="_blank">here</a></span>
+			<span id="theInfo" style="display: none;">Don't believe it? Click <a id="outsideMovieLink" class="link" href="#" target="_blank">here</a></span>
+		</div>
+		<div id="movieOnDemand">
+			<span id="onDemand" sytle="display: none;">Wanna watch it? Click <a id="onDemandLink" class="link" href="#" target="_blank">here</a></span>
 		</div>
 		</center> 
 		</span>

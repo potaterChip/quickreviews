@@ -29,6 +29,10 @@
 	margin-top: 7%;
 }
 
+.link {
+	color: inherit;
+}
+
 .searchWrap {
 	display: inline-block;
 	background: #FFF;
