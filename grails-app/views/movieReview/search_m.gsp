@@ -16,6 +16,7 @@
 				$("#theReview").hide();
 				$("#theReview").stop(true, true);
 				$("#theInfo").hide();
+				$("#onDemand").hide();
 				var title = term ? term : $("#movieName").val();
 				$.ajax({
 					url: "review",
@@ -45,6 +46,12 @@
 			$("#search").click(function() {
 					submitFunction(null);
 					return false;
+			});
+
+			$("#movieName").click(function() {
+				if($("#theReview").text() !== "") {
+					this.value = '';
+				}
 			});
 
 		$("#movieName").autocomplete({
@@ -81,7 +88,7 @@
 			<span id="theInfo" style="display: none;">Don't believe it? Click <a id="outsideMovieLink" class="link" href="#" target="_blank">here</a></span>
 		</div>
 		<div id="movieOnDemand">
-			<span id="onDemand" sytle="display: none;">Wanna watch it? Click <a id="onDemandLink" class="link" href="#" target="_blank">here</a></span>
+			<span id="onDemand" style="display: none;">Wanna watch it? Click <a id="onDemandLink" class="link" href="#" target="_blank">here</a></span>
 		</div>
 		</center> 
 		</span>

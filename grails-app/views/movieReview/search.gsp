@@ -46,6 +46,12 @@
 					return false;
 			});
 
+			$("#movieName").click(function() {
+				if($("#theReview").text() !== "") {
+					this.value = '';
+				}
+			});
+
 			$("#movieName").autocomplete({
 				source: "movieReview/results",
 				minLength : 2,
