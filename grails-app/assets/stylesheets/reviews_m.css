@@ -43,20 +43,28 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	width: 76%;
+	width: 85%;
 }
 
 .searchSubmit {
-	width: 20%;
+	width: 12%;
 	height: 20px;
 	vertical-align: middle;
 	padding: 0;
 	border: none;
 	outline: none;
 	margin-top: 3px;
-	background: url(magnifier12.png) no-repeat right 1;
+	background: url(magnifier12.png) no-repeat center;
 }
 
 .link {
 	color: inherit;
+}
+
+#movieInfoDiv {
+	padding-top: 10px;
+}
+
+.mainFont {
+	font-family: Open Sans,serif;
 }

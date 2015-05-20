@@ -1,6 +1,10 @@
 <html>
 <head>
 	<title>Quick Reviews</title>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
+	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
+	<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
 	<asset:stylesheet src="jquery-ui.css" />
 	<asset:stylesheet src="reviews.css"/>
 	<g:javascript library="jquery" />
@@ -70,7 +74,7 @@
 <body>
 	 					
 	<div id="fullscreenDiv">
-		<span style="display: block;">
+		<span class="mainFont" style="display: block;">
 			<center>
 		<div class="centerText">ENTER A MOVIE
 			<div>

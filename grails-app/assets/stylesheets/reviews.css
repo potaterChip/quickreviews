@@ -64,3 +64,11 @@
 	margin-top: 3px;
 	background: url(magnifier12.png) no-repeat;
 }
+
+#movieInfoDiv {
+	padding-top: 10px;
+}
+
+.mainFont {
+	font-family: Open Sans,serif;
+}
