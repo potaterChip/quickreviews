@@ -2,6 +2,9 @@ package com.potaterchip
 
 class MovieReviewController {
     static scaffold = true
+    		
+	def htmlService
+	def movieReviewService
 	def grailsApplication
 	
 	def search() {
@@ -11,6 +14,20 @@ class MovieReviewController {
 	}
 	
 	def search_m() {}
+	
+	def adminSearch() {
+		if(params.query){
+			   def query = params.query
+			   def movieReviewCriteria = MovieReview.createCriteria()
+			   def events = movieReviewCriteria.list {
+				   like ("movieName", "%${query}%")
+				   maxResults(5)
+				   order("numberOfSearches", "desc")
+				   order("reviewScore", "desc")
+			   }
+			   [events : events]	
+		}
+	}
 	
 	def login()  {
 		if(params.cName) 
@@ -31,9 +48,6 @@ class MovieReviewController {
 			render view:'login'
 		}
 	}
-	
-	def htmlService
-	def movieReviewService
 	
 	def review() {
 		def tempName = params.movieName

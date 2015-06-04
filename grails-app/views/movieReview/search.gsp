@@ -68,12 +68,18 @@
 				}
 			});
 
+			$("#aboutLink").click(function() {
+				$("#dialog").dialog();
+			});
+
 		});
 	</script>
 </head>
 <body>
 	 					
 	<div id="fullscreenDiv">
+		<div id="aboutLink" class="mainFont">ABOUT | CONTACT
+		</div>
 		<span class="mainFont" style="display: block;">
 			<center>
 		<div class="centerText">ENTER A MOVIE
@@ -104,5 +110,8 @@
 	</div>
 </div>
  
+ <div id="dialog" title="True Critic">
+ 	<p>Get the REAL movie reviews here</p>
+ </div>
 </body>
 </html>
