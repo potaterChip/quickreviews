@@ -70,6 +70,7 @@
 
 			$("#aboutLink").click(function() {
 				$("#dialog").dialog();
+				$('.ui-dialog :button').blur();
 			});
 
 		});
@@ -78,8 +79,6 @@
 <body>
 	 					
 	<div id="fullscreenDiv">
-		<div id="aboutLink" class="mainFont">ABOUT | CONTACT
-		</div>
 		<span class="mainFont" style="display: block;">
 			<center>
 		<div class="centerText">ENTER A MOVIE
@@ -107,8 +106,15 @@
 		</div>
 			</center>
 		</span>
+		<div class="footer mainFont">
+<%--			<div>--%>
+<%--				<p>HEY YOU GUYS</p>--%>
+<%--			</div>--%>
+			<div id="aboutLink" class="mainFont">ABOUT | CONTACT
+			</div>
+		</div>
 	</div>
-</div>
+
  
  <div id="dialog" title="True Critic">
  	<p>Get the REAL movie reviews here</p>

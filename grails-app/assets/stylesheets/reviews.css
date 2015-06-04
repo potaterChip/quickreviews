@@ -73,8 +73,10 @@
 	font-family: Open Sans,serif;
 }
 
-#aboutLink {
+.footer {
 	position: absolute;
 	bottom: 0px;
-	right: 50%;
+	right: 0px;
+	left: 0px;
+	text-align: center;
 }
