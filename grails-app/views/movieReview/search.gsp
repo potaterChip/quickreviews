@@ -70,6 +70,7 @@
 
 			$("#aboutLink").click(function() {
 				$("#dialog").dialog({
+						modal: true,
 						draggable: false,
 						height: 250,
 						width: 400
@@ -111,8 +112,7 @@
 			</center>
 		</span>
 		<div class="footer mainFont">
-			<div id="aboutLink" class="mainFont">ABOUT | CONTACT
-			</div>
+			<span id="aboutLink" class="mainFont pointer">ABOUT</span> | <span id="contactLink" class="mainFont">CONTACT</span>
 		</div>
 	</div>
 

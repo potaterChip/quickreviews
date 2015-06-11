@@ -121,3 +121,7 @@
 .dialogClass {
 	text-align: center;
 }
+
+.pointer {
+	cursor: pointer; cursor: hand;
+}
