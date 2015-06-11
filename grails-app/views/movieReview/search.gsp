@@ -69,7 +69,11 @@
 			});
 
 			$("#aboutLink").click(function() {
-				$("#dialog").dialog();
+				$("#dialog").dialog({
+						draggable: false,
+						height: 250,
+						width: 400
+					});
 				$('.ui-dialog :button').blur();
 			});
 
@@ -107,17 +111,20 @@
 			</center>
 		</span>
 		<div class="footer mainFont">
-<%--			<div>--%>
-<%--				<p>HEY YOU GUYS</p>--%>
-<%--			</div>--%>
 			<div id="aboutLink" class="mainFont">ABOUT | CONTACT
 			</div>
 		</div>
 	</div>
 
  
- <div id="dialog" title="True Critic">
- 	<p>Get the REAL movie reviews here</p>
+ <div id="dialog" class="dialogClass" title="True Critic">
+ 	<p>There's nothing worse than a critic who thinks their opinion is in any way "right". That think that they are more important than
+ 	the work they are "reviewing". And now with the internet, any jackass can spew their bullshit all over 
+ 	the place. No longer. Use this tool to get quick and correct assessment of any movie, and never deal with pretentious critic cockwads ever again. </p>
+ 	<br />
+ 	<br />
+ 	<p>By the way, the assessments you get are not opinions, they are facts.</p>
+ 	
  </div>
 </body>
 </html>
