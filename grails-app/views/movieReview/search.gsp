@@ -75,7 +75,20 @@
 						height: 250,
 						width: 400
 					});
+				var something = $('.ui-dialog :button');
+				var something2 = $('.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus');
 				$('.ui-dialog :button').blur();
+				$('.ui-dialog :button').hover(function() {$(this).css({"background": "grey url('ui-bg_glass_100_f6f6f6_1x400.png') 50% 50% repeat-x",
+					"border": "none",
+					"width": "20px",
+					"right": "0.25em",	
+					"color": "grey"});},
+					function() {
+						$(this).css({"border": "1px solid #cccccc",
+						  "background": "#f6f6f6 url('ui-bg_glass_100_f6f6f6_1x400.png') 50% 50% repeat-x",
+						  "right": "0.3em",
+						  "color": "#1c94c4"});
+					});
 			});
 
 		});
@@ -112,7 +125,7 @@
 			</center>
 		</span>
 		<div class="footer mainFont">
-			<span id="aboutLink" class="mainFont pointer">ABOUT</span> | <span id="contactLink" class="mainFont">CONTACT</span>
+			<span id="aboutLink" class="mainFont pointer">ABOUT</span>
 		</div>
 	</div>
 
@@ -124,7 +137,7 @@
  	<br />
  	<br />
  	<p>By the way, the assessments you get are not opinions, they are facts.</p>
- 	
+ 	<p>Comments, questions, concerns potatertotchip@gmail.com</p>
  </div>
 </body>
 </html>
